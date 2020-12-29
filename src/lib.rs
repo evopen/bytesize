@@ -27,10 +27,6 @@
 //!  assert_eq!("518 GB".to_string(), ByteSize::gb(518).to_string(false));
 //! ```
 
-#[cfg(feature = "serde")]
-#[macro_use]
-extern crate serde;
-
 use std::fmt::{Debug, Display, Formatter, Result};
 use std::ops::{Add, Mul};
 
@@ -104,9 +100,18 @@ pub fn pib<V: Into<u64>>(size: V) -> u64 {
 }
 
 /// Byte size representation
-#[derive(Copy, Clone, PartialEq, PartialOrd, Eq, Ord, Default)]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "schemars", derive(schemars::JsonSchema))]
+#[derive(
+    Copy,
+    Clone,
+    PartialEq,
+    PartialOrd,
+    Eq,
+    Ord,
+    Default,
+    serde::Serialize,
+    serde::Deserialize,
+    schemars::JsonSchema,
+)]
 pub struct ByteSize(pub u64);
 
 impl ByteSize {

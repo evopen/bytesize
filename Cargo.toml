@@ -12,5 +12,5 @@ keywords = ["byte", "byte-size", "utility", "human-readable", "format"]
 license = "Apache-2.0"
 
 [dependencies]
-serde = { version = "1.0", optional = true, features = ["derive"] }
-schemars = { version = "0.8.0", optional = true, features = ["preserve_order"] }
+serde = { version = "1.0", features = ["derive"] }
+schemars = { version = "0.8.0", features = ["preserve_order"] }
